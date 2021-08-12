@@ -1,6 +1,8 @@
 # 给你一个只包含 '(' 和 ')' 的字符串，找出最长有效（格式正确且连续）括号子串的长度。
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
+        return self.calc1(s)
+    def calc1(self,s):
         n = len(s)
         dp = [0]*n
         for i in range(1,n):
@@ -10,6 +12,8 @@ class Solution:
                 elif (i-dp[i-1]) > 0 and s[i-dp[i-1]-1]=='(':
                     dp[i]=dp[i-1]+(dp[i-dp[i-1]-2] if i-dp[i-1]>=2 else 0)+2
         return max(dp)
+    def calc2(self,s):
+        return 0
 
 import random
 s=Solution()
